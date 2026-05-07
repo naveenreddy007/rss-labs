@@ -10,7 +10,29 @@ const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' })
 export const metadata: Metadata = {
   title: 'RSS Environmental & Analytical Labs | Tirupati',
   description: 'Environmental testing and treatment solutions - Water testing, Food testing, ETP/STP/RO plant services, Laboratory infrastructure, and OCEMS monitoring systems.',
-  generator: 'v0.app',
+  applicationName: 'RSS Environmental & Analytical Labs',
+  generator: 'Next.js',
+  openGraph: {
+    title: 'RSS Environmental & Analytical Labs | Tirupati',
+    description: 'Environmental testing, wastewater treatment, laboratory infrastructure, and OCEMS monitoring systems.',
+    siteName: 'RSS Environmental & Analytical Labs',
+    type: 'website',
+    locale: 'en_IN',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1024,
+        height: 1024,
+        alt: 'RSS Environmental & Analytical Labs logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RSS Environmental & Analytical Labs | Tirupati',
+    description: 'Environmental testing, wastewater treatment, laboratory infrastructure, and OCEMS monitoring systems.',
+    images: ['/logo.png'],
+  },
   icons: {
     icon: [
       {
