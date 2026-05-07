@@ -3,10 +3,10 @@ import Link from "next/link"
 import { ArrowRight, ChevronDown } from "lucide-react"
 
 const stats = [
-  { value: "15+", label: "Years of Experience" },
-  { value: "500+", label: "Clients Served" },
-  { value: "50K+", label: "Tests Conducted" },
-  { value: "99%", label: "Accuracy Rate" },
+  { value: "6", label: "Service Lines" },
+  { value: "24/7", label: "OCEMS Support Scope" },
+  { value: "AP", label: "Tirupati Base" },
+  { value: "AMC", label: "Plant Lifecycle Support" },
 ]
 
 export function Hero() {
@@ -28,15 +28,12 @@ export function Hero() {
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 grid-pattern opacity-40" />
 
-      {/* Glowing orb */}
-      <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[140px] pointer-events-none" />
-
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-28 lg:px-8 pt-36">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold tracking-widest uppercase mb-6">
           <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-          NABL Accredited Laboratory — Tirupati, AP
+          Environmental Testing and Compliance Support - Tirupati, AP
         </div>
 
         {/* Headline */}
@@ -47,20 +44,20 @@ export function Hero() {
         </h1>
 
         <p className="mt-6 max-w-xl text-base sm:text-xl text-foreground/80 leading-relaxed font-semibold">
-          Advanced environmental testing, treatment plant solutions, and continuous monitoring systems — built for compliance, precision, and sustainability.
+          Environmental testing, treatment plant solutions, lab infrastructure, and continuous monitoring systems built for practical compliance work.
         </p>
 
         {/* Actions */}
         <div className="mt-10 flex flex-wrap gap-4">
           <Link
-            href="#services"
+            href="/#services"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/85 transition-all duration-200 shadow-[0_0_30px_var(--glow)] hover:shadow-[0_0_40px_var(--glow)]"
           >
             Explore Services
             <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
-            href="#contact"
+            href="/#contact"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-muted-foreground font-semibold text-sm hover:border-primary/50 hover:text-primary transition-all duration-200"
           >
             Talk to an Expert

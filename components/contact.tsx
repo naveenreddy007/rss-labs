@@ -2,36 +2,33 @@
 
 import { useState } from "react"
 import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react"
+import { company, serviceCatalog, trustPoints } from "@/lib/site-data"
 
 const contactInfo = [
   {
     icon: MapPin,
     title: "Address",
-    details: ["RSS Environmental & Analytical Labs", "Tirupati, Andhra Pradesh — 517501"],
+    details: [company.name, ...company.addressLines],
   },
   {
     icon: Phone,
     title: "Phone",
-    details: ["+91 877 225 1234", "+91 98765 43210"],
+    details: company.phoneNumbers,
   },
   {
     icon: Mail,
     title: "Email",
-    details: ["info@rsslabs.in", "support@rsslabs.in"],
+    details: company.emails,
   },
   {
     icon: Clock,
     title: "Working Hours",
-    details: ["Mon – Sat: 9:00 AM – 6:00 PM", "Sunday: Closed"],
+    details: ["Mon - Sat: 9:00 AM - 6:00 PM", "Sunday: Closed"],
   },
 ]
 
 const services = [
-  "Water & Wastewater Testing",
-  "Food Testing",
-  "ETP / STP / RO Plant Services",
-  "Laboratory Infrastructure",
-  "OCEMS Systems",
+  ...serviceCatalog.map((service) => service.title),
   "Other",
 ]
 
@@ -95,14 +92,14 @@ export function Contact() {
               Start Your Environmental Compliance Journey
             </h2>
             <p className="text-foreground/70 text-base leading-relaxed max-w-xs sm:text-right font-medium">
-              Reach out for a free consultation. We respond within 24 hours.
+              Share your testing, plant, supply, or monitoring requirement and the team can route it to the right service line.
             </p>
           </div>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-6">
 
-          {/* Form — takes 3 cols */}
+          {/* Form takes 3 cols */}
           <div className="lg:col-span-3 rounded-2xl border border-border bg-card p-8">
             <div
               aria-live="polite"
@@ -215,7 +212,7 @@ export function Contact() {
             </form>
           </div>
 
-          {/* Contact info — takes 2 cols */}
+          {/* Contact info takes 2 cols */}
           <div className="lg:col-span-2 flex flex-col gap-4">
             {contactInfo.map((item) => (
               <div
@@ -234,16 +231,16 @@ export function Contact() {
               </div>
             ))}
 
-            {/* Accreditation badge */}
+            {/* Trust badge */}
             <div className="rounded-xl border border-primary/20 bg-primary/10 p-5">
-              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Accreditations</p>
-              <div className="flex flex-wrap gap-2">
-                {["NABL", "ISO 17025", "ISO 9001", "FSSAI", "CPCB"].map((cert) => (
-                  <span key={cert} className="text-[11px] font-semibold text-primary bg-primary/10 border border-primary/25 rounded-full px-3 py-1">
-                    {cert}
-                  </span>
+              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Service Confidence</p>
+              <ul className="space-y-2">
+                {trustPoints.slice(0, 3).map((point) => (
+                  <li key={point} className="text-[12px] font-semibold leading-relaxed text-primary">
+                    {point}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
 

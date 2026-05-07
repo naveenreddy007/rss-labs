@@ -1,20 +1,17 @@
 import Image from "next/image"
-import { Award, Users, Target, Shield, CheckCircle, Building2, Eye } from "lucide-react"
-
-const certs = ["NABL Accredited", "ISO 17025", "ISO 9001", "FSSAI Approved", "CPCB Registered"]
+import { Award, Building2, CheckCircle, Eye, Shield } from "lucide-react"
+import { company, trustPoints } from "@/lib/site-data"
 
 const highlights = [
   {
     icon: Building2,
     title: "Company Vision",
-    description:
-      "RSS Environmental & Analytical Labs aims to become a leading organization recognized for excellence in environmental testing, wastewater treatment solutions, and laboratory equipment supply.",
+    description: company.vision,
   },
   {
     icon: Eye,
     title: "Company Mission",
-    description:
-      "To deliver high-quality, timely, and cost-effective services through continuous technology upgrades while creating lasting value for all stakeholders.",
+    description: company.mission,
   },
   {
     icon: Award,
@@ -30,12 +27,7 @@ const highlights = [
   },
 ]
 
-const parameters = [
-  { label: "Physical Parameters", value: 85, unit: "tests/month" },
-  { label: "Chemical Parameters", value: 92, unit: "tests/month" },
-  { label: "Biological Parameters", value: 78, unit: "tests/month" },
-  { label: "Emission Monitoring", value: 96, unit: "uptime %" },
-]
+const scopeItems = ["Testing", "Treatment", "Monitoring", "Supply", "AMC", "Documentation"]
 
 export function About() {
   return (
@@ -68,7 +60,7 @@ export function About() {
               laboratory equipment and furniture supply, and pollution-related online monitoring equipment.
             </p>
             <p className="text-foreground/75 leading-relaxed mb-10 text-base font-medium">
-              Address: 10-15-66, K K Layout, Revenue ward No 10, Tirupati, AP-517501.
+              Address: {company.addressLines.join(", ")}.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -99,13 +91,13 @@ export function About() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
-                {certs.map((cert) => (
+                {scopeItems.map((item) => (
                   <span
-                    key={cert}
+                    key={item}
                     className="inline-flex items-center gap-1 text-[10px] font-bold tracking-wide bg-background/80 backdrop-blur-sm border border-primary/30 text-primary rounded-full px-2.5 py-1"
                   >
                     <CheckCircle className="h-2.5 w-2.5" />
-                    {cert}
+                    {item}
                   </span>
                 ))}
               </div>
@@ -113,21 +105,13 @@ export function About() {
 
             <div className="rounded-2xl border border-border bg-card p-6">
               <p className="text-xs font-black tracking-widest uppercase text-foreground mb-5">
-                Operational Performance Snapshot
+                Trust Positioning
               </p>
-              <div className="flex flex-col gap-4">
-                {parameters.map((param) => (
-                  <div key={param.label}>
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-xs font-semibold text-foreground/75">{param.label}</span>
-                      <span className="text-xs font-black text-primary">{param.value}%</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
-                        style={{ width: `${param.value}%` }}
-                      />
-                    </div>
+              <div className="flex flex-col gap-3">
+                {trustPoints.map((point) => (
+                  <div key={point} className="flex items-start gap-3">
+                    <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <p className="text-sm font-medium leading-relaxed text-foreground/75">{point}</p>
                   </div>
                 ))}
               </div>
@@ -135,9 +119,9 @@ export function About() {
 
             <div className="grid grid-cols-3 gap-3">
               {[
-                { v: "15+", l: "Years" },
-                { v: "500+", l: "Clients" },
-                { v: "50K+", l: "Tests" },
+                { v: "6", l: "Service Lines" },
+                { v: "4", l: "AMC Areas" },
+                { v: "5", l: "Process Steps" },
               ].map((s) => (
                 <div key={s.l} className="rounded-xl border border-border bg-card p-4 flex flex-col items-center justify-center text-center hover:border-primary/40 transition-colors">
                   <span className="text-3xl font-black text-primary">{s.v}</span>

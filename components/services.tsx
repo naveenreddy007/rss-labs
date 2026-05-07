@@ -1,58 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
-
-const services = [
-  {
-    id: "water",
-    image: "/images/water-testing.jpg",
-    tag: "Testing",
-    title: "Water & Wastewater Testing",
-    description: "Comprehensive analysis of physical, chemical, and microbiological parameters for drinking water, industrial effluents, and wastewater streams.",
-    features: ["pH, DO, BOD, COD Analysis", "Heavy Metal Profiling", "Microbiological Testing", "Compliance Reporting"],
-    span: "lg:col-span-2",
-  },
-  {
-    id: "food",
-    image: "/images/food-testing.jpg",
-    tag: "Testing",
-    title: "Food Testing",
-    description: "Complete food safety analysis — contamination, nutritional values, pathogens, and shelf-life studies.",
-    features: ["Nutritional Analysis", "Pathogen Detection", "Pesticide Residue", "Shelf-Life Studies"],
-    span: "",
-  },
-  {
-    id: "etp",
-    image: "/images/etp-plant.jpg",
-    tag: "Treatment",
-    title: "ETP / STP / RO Plant Services",
-    description: "Design, installation, and annual maintenance of Effluent Treatment Plants, Sewage Treatment Plants, and Reverse Osmosis systems.",
-    features: ["Plant Design & Installation", "Equipment Supply", "AMC Contracts", "Troubleshooting"],
-    span: "",
-  },
-  {
-    id: "lab",
-    image: "/images/lab-infra.jpg",
-    tag: "Infrastructure",
-    title: "Laboratory Infrastructure",
-    description: "Custom laboratory furniture, fume hoods, and sourcing of high-precision analytical instruments.",
-    features: ["Lab Furniture Design", "Fume Hoods & Cabinets", "Instrument Sourcing", "Consumables Supply"],
-    span: "",
-  },
-  {
-    id: "ocems",
-    image: "/images/ocems.jpg",
-    tag: "Monitoring",
-    title: "OCEMS Systems",
-    description: "Online Continuous Emission & Effluent Monitoring for real-time compliance tracking integrated with CPCB portals.",
-    features: ["Real-time Monitoring", "Auto Data Logging", "Compliance Alerts", "CPCB Integration"],
-    span: "lg:col-span-2",
-  },
-]
+import { serviceCatalog } from "@/lib/site-data"
 
 const tagColors: Record<string, string> = {
   Testing: "bg-primary/15 text-primary border-primary/30",
+  "Food Safety": "bg-primary/15 text-primary border-primary/30",
   Treatment: "bg-accent/15 text-accent border-accent/30",
+  Supply: "bg-muted text-muted-foreground border-border",
   Infrastructure: "bg-muted text-muted-foreground border-border",
   Monitoring: "bg-primary/15 text-primary border-primary/30",
 }
@@ -74,17 +29,19 @@ export function Services() {
               End-to-End Environmental Services
             </h2>
             <p className="text-foreground/70 text-base leading-relaxed max-w-xs sm:text-right font-medium">
-              From lab testing to plant installation and real-time monitoring — all under one roof.
+              From lab testing to plant installation and real-time monitoring, organized as service lines clients can understand.
             </p>
           </div>
         </div>
 
         {/* Bento grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {services.map((service) => (
+          {serviceCatalog.map((service, index) => (
             <div
               key={service.id}
-              className={`group relative rounded-2xl overflow-hidden border border-border bg-card hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_40px_var(--glow)] ${service.span}`}
+              className={`group relative rounded-lg overflow-hidden border border-border bg-card hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_40px_var(--glow)] ${
+                index === 0 || index === serviceCatalog.length - 1 ? "lg:col-span-2" : ""
+              }`}
               id={service.id}
             >
               {/* Image */}
@@ -109,7 +66,7 @@ export function Services() {
                   {service.title}
                 </h3>
                 <p className="text-sm text-foreground/70 leading-relaxed mb-5 font-medium">
-                  {service.description}
+                  {service.summary}
                 </p>
 
                 {/* Features as inline pills */}
@@ -126,10 +83,10 @@ export function Services() {
                 </div>
 
                 <Link
-                  href="#contact"
+                  href={`/services/${service.slug}`}
                   className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:gap-2.5 transition-all duration-200"
                 >
-                  Enquire now <ArrowRight className="h-3.5 w-3.5" />
+                  View details <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
             </div>

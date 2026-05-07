@@ -6,15 +6,25 @@ import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' })
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://rss-labs.vercel.app'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'RSS Environmental & Analytical Labs | Tirupati',
-  description: 'Environmental testing and treatment solutions - Water testing, Food testing, ETP/STP/RO plant services, Laboratory infrastructure, and OCEMS monitoring systems.',
+  description: 'Environmental testing, cooked food testing, ETP/STP/RO plant services, laboratory infrastructure, lab supply, and OCEMS monitoring support in Tirupati.',
   applicationName: 'RSS Environmental & Analytical Labs',
   generator: 'Next.js',
+  keywords: [
+    'RSS Environmental Labs',
+    'water testing lab Tirupati',
+    'wastewater testing Andhra Pradesh',
+    'ETP STP AMC',
+    'OCEMS supplier Andhra Pradesh',
+    'laboratory furniture Tirupati',
+  ],
   openGraph: {
     title: 'RSS Environmental & Analytical Labs | Tirupati',
-    description: 'Environmental testing, wastewater treatment, laboratory infrastructure, and OCEMS monitoring systems.',
+    description: 'Environmental testing, wastewater treatment, laboratory infrastructure, lab supply, and OCEMS monitoring support.',
     siteName: 'RSS Environmental & Analytical Labs',
     type: 'website',
     locale: 'en_IN',

@@ -7,9 +7,10 @@ import { Menu, X, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
 
 const navigation = [
-  { name: "Services", href: "#services" },
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Services", href: "/#services" },
+  { name: "Industries", href: "/#industries" },
+  { name: "Process", href: "/#process" },
+  { name: "Contact", href: "/#contact" },
 ]
 
 export function Header() {
@@ -40,7 +41,7 @@ export function Header() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         {/* Logo */}
-        <Link href="#home" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group">
           <div className="relative flex h-10 w-10 items-center justify-center rounded-lg overflow-hidden">
             <div className="absolute inset-0 bg-primary/20 rounded-lg border border-primary/40 group-hover:bg-primary/30 transition-colors" />
             <Image
@@ -80,7 +81,7 @@ export function Header() {
             {mounted ? (isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : null}
           </button>
           <Link
-            href="#contact"
+            href="/#contact"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/85 transition-all duration-200 shadow-[0_0_20px_var(--glow)] hover:shadow-[0_0_30px_var(--glow)]"
           >
             Get a Quote
@@ -121,7 +122,7 @@ export function Header() {
               </Link>
             ))}
             <Link
-              href="#contact"
+            href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
               className="mt-3 px-4 py-3 rounded-lg bg-primary text-primary-foreground text-sm font-semibold text-center"
             >

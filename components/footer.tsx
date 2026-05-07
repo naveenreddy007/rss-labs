@@ -1,19 +1,19 @@
 import Link from "next/link"
 import Image from "next/image"
+import { company, serviceCatalog } from "@/lib/site-data"
+
+const footerTrustLabels = ["Testing", "Treatment", "Monitoring", "AMC Support"]
 
 const navLinks = {
-  services: [
-    { name: "Water Testing", href: "#water" },
-    { name: "Food Testing", href: "#food" },
-    { name: "ETP/STP/RO Plants", href: "#etp" },
-    { name: "Lab Infrastructure", href: "#lab" },
-    { name: "OCEMS Systems", href: "#ocems" },
-  ],
+  services: serviceCatalog.map((service) => ({
+    name: service.title,
+    href: `/services/${service.slug}`,
+  })),
   company: [
-    { name: "About Us", href: "#about" },
-    { name: "Certifications", href: "#about" },
-    { name: "Careers", href: "#contact" },
-    { name: "Contact", href: "#contact" },
+    { name: "About Us", href: "/#about" },
+    { name: "Industries", href: "/#industries" },
+    { name: "Company Profile", href: "/company-profile" },
+    { name: "Contact", href: "/#contact" },
   ],
 }
 
@@ -29,7 +29,7 @@ export function Footer() {
 
           {/* Brand col */}
           <div className="sm:col-span-2 lg:col-span-2">
-            <Link href="#home" className="flex items-center gap-3 group w-fit mb-5">
+            <Link href="/" className="flex items-center gap-3 group w-fit mb-5">
               <div className="relative flex h-10 w-10 items-center justify-center rounded-lg overflow-hidden">
                 <div className="absolute inset-0 bg-primary/20 rounded-lg border border-primary/40" />
                 <Image
@@ -47,17 +47,16 @@ export function Footer() {
             </Link>
 
             <p className="text-sm text-foreground/70 leading-relaxed max-w-sm mb-6 font-medium">
-              NABL accredited environmental testing and treatment solutions laboratory based in Tirupati, Andhra Pradesh. Serving industries across India since 2009.
+              Environmental testing, wastewater treatment, laboratory infrastructure, supply, and monitoring support from Tirupati, Andhra Pradesh.
             </p>
 
-            {/* Cert badges */}
             <div className="flex flex-wrap gap-2">
-              {["NABL", "ISO 17025", "ISO 9001"].map((cert) => (
+              {footerTrustLabels.map((label) => (
                 <span
-                  key={cert}
+                  key={label}
                   className="text-[10px] font-bold text-primary border border-primary/20 bg-primary/10 rounded-full px-2.5 py-1 tracking-wide"
                 >
-                  {cert}
+                  {label}
                 </span>
               ))}
             </div>
@@ -99,9 +98,9 @@ export function Footer() {
             {/* Contact snippet */}
             <div className="mt-8 flex flex-col gap-1.5">
               <p className="text-xs font-bold text-foreground uppercase tracking-widest mb-2">Contact</p>
-              <a href="tel:+918772251234" className="text-sm text-foreground/70 hover:text-primary transition-colors font-medium">+91 877 225 1234</a>
-              <a href="mailto:info@rsslabs.in" className="text-sm text-foreground/70 hover:text-primary transition-colors font-medium">info@rsslabs.in</a>
-              <p className="text-sm text-foreground/70 font-medium">Tirupati, AP — 517501</p>
+              <a href="tel:+918772251234" className="text-sm text-foreground/70 hover:text-primary transition-colors font-medium">{company.phoneNumbers[0]}</a>
+              <a href={`mailto:${company.emails[0]}`} className="text-sm text-foreground/70 hover:text-primary transition-colors font-medium">{company.emails[0]}</a>
+              <p className="text-sm text-foreground/70 font-medium">{company.addressLines.join(", ")}.</p>
             </div>
           </div>
         </div>
