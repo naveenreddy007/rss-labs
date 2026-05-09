@@ -29,7 +29,7 @@ export default function TermsOfServicePage() {
         </section>
         <section>
           <h2 className="text-lg font-bold text-foreground">4) Contact</h2>
-          <p>Email: info@rsslabs.in</p>
+          <p>Email: info@rssenvirolabs.com</p>
         </section>
       </div>
     </main>

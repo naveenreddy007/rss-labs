@@ -98,7 +98,8 @@ export function Footer() {
             {/* Contact snippet */}
             <div className="mt-8 flex flex-col gap-1.5">
               <p className="text-xs font-bold text-foreground uppercase tracking-widest mb-2">Contact</p>
-              <a href="tel:+918772251234" className="text-sm text-foreground/70 hover:text-primary transition-colors font-medium">{company.phoneNumbers[0]}</a>
+              <a href="tel:+917386528760" className="text-sm text-foreground/70 hover:text-primary transition-colors font-medium">{company.phoneNumbers[0]}</a>
+              <a href={company.whatsappHref} target="_blank" rel="noreferrer" className="text-sm text-foreground/70 hover:text-primary transition-colors font-medium">WhatsApp: {company.whatsappNumber}</a>
               <a href={`mailto:${company.emails[0]}`} className="text-sm text-foreground/70 hover:text-primary transition-colors font-medium">{company.emails[0]}</a>
               <p className="text-sm text-foreground/70 font-medium">{company.addressLines.join(", ")}.</p>
             </div>

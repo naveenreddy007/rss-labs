@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { company } from "@/lib/site-data"
 
 type ContactPayload = {
   name: string
@@ -7,6 +8,20 @@ type ContactPayload = {
   company?: string
   service: string
   message?: string
+}
+
+function buildWhatsAppUrl(payload: ContactPayload) {
+  const message = [
+    "New RSS Labs inquiry",
+    `Name: ${payload.name}`,
+    `Phone: ${payload.phone}`,
+    `Email: ${payload.email}`,
+    payload.company ? `Company: ${payload.company}` : "",
+    `Service: ${payload.service}`,
+    payload.message ? `Message: ${payload.message}` : "",
+  ].filter(Boolean).join("\n")
+
+  return `${company.whatsappHref}?text=${encodeURIComponent(message)}`
 }
 
 export async function POST(request: Request) {
@@ -20,9 +35,18 @@ export async function POST(request: Request) {
       )
     }
 
-    console.log("[contact] form submission:", payload)
+    const whatsappUrl = buildWhatsAppUrl(payload)
 
-    return NextResponse.json({ ok: true, message: "Contact request received." })
+    console.log("[contact] form submission:", {
+      ...payload,
+      notifyTo: company.whatsappNumber,
+    })
+
+    return NextResponse.json({
+      ok: true,
+      message: "Contact request received.",
+      whatsappUrl,
+    })
   } catch {
     return NextResponse.json(
       { ok: false, error: "Invalid request payload." },

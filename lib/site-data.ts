@@ -6,8 +6,10 @@ export const company = {
     "Revenue ward No 10",
     "Tirupati, Andhra Pradesh 517501",
   ],
-  phoneNumbers: ["+91 877 225 1234", "+91 98765 43210"],
-  emails: ["info@rsslabs.in", "support@rsslabs.in"],
+  phoneNumbers: ["+91 73865 28760"],
+  whatsappNumber: "+91 73865 28760",
+  whatsappHref: "https://wa.me/917386528760",
+  emails: ["info@rssenvirolabs.com", "rajesh@rssenvirolabs.com"],
   mission:
     "Deliver high-quality, timely, and cost-effective services by continuously upgrading technology and processes.",
   vision:

@@ -44,12 +44,14 @@ export function Contact() {
   const [submitting, setSubmitting] = useState(false)
   const [statusType, setStatusType] = useState<"idle" | "success" | "error">("idle")
   const [statusMessage, setStatusMessage] = useState("")
+  const [whatsappUrl, setWhatsappUrl] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
     setStatusType("idle")
     setStatusMessage("")
+    setWhatsappUrl("")
 
     try {
       const response = await fetch("/api/contact", {
@@ -65,8 +67,13 @@ export function Contact() {
         throw new Error(payload?.error || "Unable to send inquiry right now. Please call us directly.")
       }
 
+      if (payload.whatsappUrl) {
+        setWhatsappUrl(payload.whatsappUrl)
+        window.open(payload.whatsappUrl, "_blank", "noopener,noreferrer")
+      }
+
       setStatusType("success")
-      setStatusMessage("Inquiry sent successfully. Our team will contact you within 24 hours.")
+      setStatusMessage("Inquiry prepared for WhatsApp. Please send the opened WhatsApp message to share details with our team.")
       setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" })
     } catch (err) {
       setStatusType("error")
@@ -113,6 +120,16 @@ export function Contact() {
               }`}
             >
               {statusMessage}
+              {whatsappUrl && (
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ml-2 underline underline-offset-4"
+                >
+                  Open WhatsApp
+                </a>
+              )}
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">

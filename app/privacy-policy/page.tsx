@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
         <section>
           <h2 className="text-lg font-bold text-foreground">4) Your choices</h2>
           <p>
-            You can request correction or deletion of your submitted details by contacting us at info@rsslabs.in.
+            You can request correction or deletion of your submitted details by contacting us at info@rssenvirolabs.com.
           </p>
         </section>
       </div>
